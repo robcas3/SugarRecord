@@ -6,13 +6,13 @@
 //  Copyright © 2018 in.caramba.SugarRecord. All rights reserved.
 //
 
-import Foundation
+import AppKit
 import CoreData
 
 public class CoreDataDocumentStorage: Storage {
     
     // MARK: - Attributes
-    
+    var document: NSPersistentDocument
     internal var objectModel: NSManagedObjectModel! = nil
     internal var persistentStore: NSPersistentStore! = nil
     internal var persistentStoreCoordinator: NSPersistentStoreCoordinator! = nil
@@ -109,38 +109,14 @@ public class CoreDataDocumentStorage: Storage {
         }
     }
     
-    public func removeStore() throws {
-//        try FileManager.default.removeItem(at: store.path() as URL)
-//        _ = try? FileManager.default.removeItem(atPath: "\(store.path().absoluteString)-shm")
-//        _ = try? FileManager.default.removeItem(atPath: "\(store.path().absoluteString)-wal")
-//
-    }
+    public func removeStore() throws {}
     
-    
-    // MARK: - Init
-    
-//    public convenience init(store: CoreDataStore, model: CoreDataObjectModel, migrate: Bool = true) throws {
-//        try self.init(store: store, model: model, migrate: migrate, versionController: VersionController())
-//    }
-//
-//    internal init(store: CoreDataStore, model: CoreDataObjectModel, migrate: Bool = true, versionController: VersionController) throws {
-//        self.store   = store
-//        self.objectModel = model.model()!
-//        self.persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: objectModel)
-//        self.persistentStore = try cdInitializeStore(store: store, storeCoordinator: persistentStoreCoordinator, migrate: migrate)
-//        self.rootSavingContext = cdContext(withParent: .coordinator(self.persistentStoreCoordinator), concurrencyType: .privateQueueConcurrencyType, inMemory: false)
-//        self.mainContext = cdContext(withParent: .context(self.rootSavingContext), concurrencyType: .mainQueueConcurrencyType, inMemory: false)
-//        #if DEBUG
-//        versionController.check()
-//        #endif
-//    }
-    
-    public init (context: NSManagedObjectContext,
-                 model: NSManagedObjectModel) {
-        self.objectModel = model
-        self.mainContext = context
-        self.rootSavingContext = context
-        self.persistentStoreCoordinator = context.persistentStoreCoordinator
+    public init (document: NSPersistentDocument) {
+        self.document = document
+        self.objectModel = document.managedObjectModel
+        self.persistentStoreCoordinator = document.managedObjectContext?.persistentStoreCoordinator
+        self.rootSavingContext = document.managedObjectContext
+        self.mainContext = cdContext(withParent: .context(self.rootSavingContext), concurrencyType: .mainQueueConcurrencyType, inMemory: false)
     }
     
     

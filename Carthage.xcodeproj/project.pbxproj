@@ -114,7 +114,7 @@
 		237FBADD1D9C0ADC00D87AA3 /* CoreDataiCloudStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237FBAAC1D9C0ADC00D87AA3 /* CoreDataiCloudStorage.swift */; };
 		237FBAE01D9C0ADC00D87AA3 /* CoreDataiCloudStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237FBAAC1D9C0ADC00D87AA3 /* CoreDataiCloudStorage.swift */; };
 		23E15DB01D7DE1000073CC71 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23E15DAF1D7DE1000073CC71 /* CoreData.framework */; };
-		F1898EA8210306000028C029 /* CoreDataDocumentStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1898EA7210306000028C029 /* CoreDataDocumentStorage.swift */; };
+		F13419F721031BD100A32D32 /* CoreDataDocumentStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1898EA7210306000028C029 /* CoreDataDocumentStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -712,7 +712,6 @@
 				237FBA5C1D9C0AD000D87AA3 /* Context.swift in Sources */,
 				237FBA841D9C0AD000D87AA3 /* DirUtils.swift in Sources */,
 				237FBABD1D9C0ADC00D87AA3 /* CoreDataObservable.swift in Sources */,
-				F1898EA8210306000028C029 /* CoreDataDocumentStorage.swift in Sources */,
 				237FBA6C1D9C0AD000D87AA3 /* NSPredicateConvertible.swift in Sources */,
 				237FBAB11D9C0ADC00D87AA3 /* CoreDataContextParent.swift in Sources */,
 				237FBAC11D9C0ADC00D87AA3 /* CoreDataOptions.swift in Sources */,
@@ -813,6 +812,7 @@
 				237FBA621D9C0AD000D87AA3 /* Context.swift in Sources */,
 				237FBA8A1D9C0AD000D87AA3 /* DirUtils.swift in Sources */,
 				237FBAC01D9C0ADC00D87AA3 /* CoreDataObservable.swift in Sources */,
+				F13419F721031BD100A32D32 /* CoreDataDocumentStorage.swift in Sources */,
 				237FBA721D9C0AD000D87AA3 /* NSPredicateConvertible.swift in Sources */,
 				237FBAB41D9C0ADC00D87AA3 /* CoreDataContextParent.swift in Sources */,
 				237FBAC41D9C0ADC00D87AA3 /* CoreDataOptions.swift in Sources */,
