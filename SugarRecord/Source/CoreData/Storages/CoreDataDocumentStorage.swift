@@ -54,14 +54,14 @@ public class CoreDataDocumentStorage: Storage {
         context.performAndWait {
             do {
                 returnedObject = try operation(context, { [weak self] () -> Void in
-                    guard let s = self,
-                        !s.persistentStoreCoordinator.persistentStores.isEmpty
-                        else { return }
+                    guard let s = self else { return }
                     do {
                         try context.save()
                     } catch {
                         _error = error
                     }
+                    guard !s.persistentStoreCoordinator.persistentStores.isEmpty
+                        else { return }
                     s.rootSavingContext.performAndWait({
                         if s.rootSavingContext.hasChanges {
                             do {
@@ -88,15 +88,14 @@ public class CoreDataDocumentStorage: Storage {
         var _error: Error!
         context.perform {
             operation(context, { [weak self] () -> Void in
-                guard let s = self,
-                    !s.persistentStoreCoordinator.persistentStores.isEmpty
-                    else { return }
+                guard let s = self else { return }
                 do {
                     try context.save()
-                }
-                catch {
+                } catch {
                     _error = error
                 }
+                guard !s.persistentStoreCoordinator.persistentStores.isEmpty
+                    else { return }
                 s.rootSavingContext.perform {
                     if s.rootSavingContext.hasChanges {
                         do {
