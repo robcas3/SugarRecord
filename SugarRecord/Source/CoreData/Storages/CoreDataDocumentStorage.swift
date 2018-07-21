@@ -13,10 +13,9 @@ public class CoreDataDocumentStorage: Storage {
     
     // MARK: - Attributes
     var document: NSPersistentDocument
-    internal var objectModel: NSManagedObjectModel! = nil
-    internal var persistentStore: NSPersistentStore! = nil
-    internal var persistentStoreCoordinator: NSPersistentStoreCoordinator! = nil
-    internal var rootSavingContext: NSManagedObjectContext! = nil
+    internal var objectModel: NSManagedObjectModel
+    internal var persistentStoreCoordinator: NSPersistentStoreCoordinator
+    internal var rootSavingContext: NSManagedObjectContext
     
     
     // MARK: - Storage conformance
@@ -54,19 +53,20 @@ public class CoreDataDocumentStorage: Storage {
         var returnedObject: T!
         context.performAndWait {
             do {
-                returnedObject = try operation(context, { () -> Void in
+                returnedObject = try operation(context, { [weak self] () -> Void in
+                    guard let s = self,
+                        !s.persistentStoreCoordinator.persistentStores.isEmpty
+                        else { return }
                     do {
                         try context.save()
-                    }
-                    catch {
+                    } catch {
                         _error = error
                     }
-                    self.rootSavingContext.performAndWait({
-                        if self.rootSavingContext.hasChanges {
+                    s.rootSavingContext.performAndWait({
+                        if s.rootSavingContext.hasChanges {
                             do {
-                                try self.rootSavingContext.save()
-                            }
-                            catch {
+                                try s.rootSavingContext.save()
+                            } catch {
                                 _error = error
                             }
                         }
@@ -87,17 +87,20 @@ public class CoreDataDocumentStorage: Storage {
         let context: NSManagedObjectContext = self.saveContext as! NSManagedObjectContext
         var _error: Error!
         context.perform {
-            operation(context, { () -> Void in
+            operation(context, { [weak self] () -> Void in
+                guard let s = self,
+                    !s.persistentStoreCoordinator.persistentStores.isEmpty
+                    else { return }
                 do {
                     try context.save()
                 }
                 catch {
                     _error = error
                 }
-                self.rootSavingContext.perform {
-                    if self.rootSavingContext.hasChanges {
+                s.rootSavingContext.perform {
+                    if s.rootSavingContext.hasChanges {
                         do {
-                            try self.rootSavingContext.save()
+                            try s.rootSavingContext.save()
                         }
                         catch {
                             _error = error
@@ -111,11 +114,11 @@ public class CoreDataDocumentStorage: Storage {
     
     public func removeStore() throws {}
     
-    public init (document: NSPersistentDocument) {
+    public init(document: NSPersistentDocument) {
         self.document = document
-        self.objectModel = document.managedObjectModel
-        self.persistentStoreCoordinator = document.managedObjectContext?.persistentStoreCoordinator
-        self.rootSavingContext = document.managedObjectContext
+        self.objectModel = document.managedObjectModel!
+        self.persistentStoreCoordinator = document.managedObjectContext!.persistentStoreCoordinator!
+        self.rootSavingContext = document.managedObjectContext!
         self.mainContext = cdContext(withParent: .context(self.rootSavingContext), concurrencyType: .mainQueueConcurrencyType, inMemory: false)
     }
     
