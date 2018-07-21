@@ -114,6 +114,7 @@
 		237FBADD1D9C0ADC00D87AA3 /* CoreDataiCloudStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237FBAAC1D9C0ADC00D87AA3 /* CoreDataiCloudStorage.swift */; };
 		237FBAE01D9C0ADC00D87AA3 /* CoreDataiCloudStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237FBAAC1D9C0ADC00D87AA3 /* CoreDataiCloudStorage.swift */; };
 		23E15DB01D7DE1000073CC71 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23E15DAF1D7DE1000073CC71 /* CoreData.framework */; };
+		F1898EA8210306000028C029 /* CoreDataDocumentStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1898EA7210306000028C029 /* CoreDataDocumentStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -177,6 +178,7 @@
 		237FBB241D9C0B1C00D87AA3 /* watchOS-Framework.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "watchOS-Framework.xcconfig"; sourceTree = "<group>"; };
 		237FBB251D9C0B1C00D87AA3 /* watchOS-StaticLibrary.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "watchOS-StaticLibrary.xcconfig"; sourceTree = "<group>"; };
 		23E15DAF1D7DE1000073CC71 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		F1898EA7210306000028C029 /* CoreDataDocumentStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataDocumentStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -401,6 +403,7 @@
 			children = (
 				237FBAAB1D9C0ADC00D87AA3 /* CoreDataDefaultStorage.swift */,
 				237FBAAC1D9C0ADC00D87AA3 /* CoreDataiCloudStorage.swift */,
+				F1898EA7210306000028C029 /* CoreDataDocumentStorage.swift */,
 			);
 			path = Storages;
 			sourceTree = "<group>";
@@ -709,6 +712,7 @@
 				237FBA5C1D9C0AD000D87AA3 /* Context.swift in Sources */,
 				237FBA841D9C0AD000D87AA3 /* DirUtils.swift in Sources */,
 				237FBABD1D9C0ADC00D87AA3 /* CoreDataObservable.swift in Sources */,
+				F1898EA8210306000028C029 /* CoreDataDocumentStorage.swift in Sources */,
 				237FBA6C1D9C0AD000D87AA3 /* NSPredicateConvertible.swift in Sources */,
 				237FBAB11D9C0ADC00D87AA3 /* CoreDataContextParent.swift in Sources */,
 				237FBAC11D9C0ADC00D87AA3 /* CoreDataOptions.swift in Sources */,
