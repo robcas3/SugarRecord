@@ -12,7 +12,6 @@ import CoreData
 public class CoreDataDocumentStorage: Storage {
     
     // MARK: - Attributes
-    var document: NSPersistentDocument
     internal var objectModel: NSManagedObjectModel
     internal var persistentStoreCoordinator: NSPersistentStoreCoordinator
     internal var rootSavingContext: NSManagedObjectContext
@@ -65,7 +64,7 @@ public class CoreDataDocumentStorage: Storage {
                     s.rootSavingContext.performAndWait({
                         if s.rootSavingContext.hasChanges {
                             do {
-                                try s.rootSavingContext.save()
+//                                try s.rootSavingContext.save()
                             } catch {
                                 _error = error
                             }
@@ -99,7 +98,7 @@ public class CoreDataDocumentStorage: Storage {
                 s.rootSavingContext.perform {
                     if s.rootSavingContext.hasChanges {
                         do {
-                            try s.rootSavingContext.save()
+//                            try s.rootSavingContext.save()
                         }
                         catch {
                             _error = error
@@ -113,11 +112,11 @@ public class CoreDataDocumentStorage: Storage {
     
     public func removeStore() throws {}
     
-    public init(document: NSPersistentDocument) {
-        self.document = document
-        self.objectModel = document.managedObjectModel!
-        self.persistentStoreCoordinator = document.managedObjectContext!.persistentStoreCoordinator!
-        self.rootSavingContext = document.managedObjectContext!
+    public init(model: NSManagedObjectModel,
+                context: NSManagedObjectContext) {
+        self.objectModel = model
+        self.persistentStoreCoordinator = context.persistentStoreCoordinator!
+        self.rootSavingContext = context
         self.mainContext = cdContext(withParent: .context(self.rootSavingContext), concurrencyType: .mainQueueConcurrencyType, inMemory: false)
     }
     
