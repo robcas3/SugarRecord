@@ -63,11 +63,11 @@ public class CoreDataDocumentStorage: Storage {
                         else { return }
                     s.rootSavingContext.performAndWait({
                         if s.rootSavingContext.hasChanges {
-                            do {
-//                                try s.rootSavingContext.save()
-                            } catch {
-                                _error = error
-                            }
+//                            do {
+////                                try s.rootSavingContext.save()
+//                            } catch {
+//                                _error = error
+//                            }
                         }
                     })
                 })
@@ -97,12 +97,12 @@ public class CoreDataDocumentStorage: Storage {
                     else { return }
                 s.rootSavingContext.perform {
                     if s.rootSavingContext.hasChanges {
-                        do {
-//                            try s.rootSavingContext.save()
-                        }
-                        catch {
-                            _error = error
-                        }
+//                        do {
+////                            try s.rootSavingContext.save()
+//                        }
+//                        catch {
+//                            _error = error
+//                        }
                     }
                     completion(_error)
                 }

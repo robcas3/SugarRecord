@@ -133,7 +133,7 @@ public class CoreDataiCloudStorage: Storage {
     // MARK: - Public
     
     @available(OSX 10.12, iOS 9, watchOS 2, tvOS 9, *)
-    public func observable<T: NSManagedObject>(request: FetchRequest<T>) -> RequestObservable<T> where T:Equatable {
+    public func observable<T: NSManagedObject>(request: FetchRequest<T>) -> RequestObservable<T> {
         return CoreDataObservable(request: request, context: self.mainContext as! NSManagedObjectContext)
     }
     

@@ -6,7 +6,7 @@ import Foundation
 extension FetchRequest: NSPredicateConvertible {
     
     public init(predicate: NSPredicate) {
-        self = FetchRequest(predicate: predicate)
+        self = FetchRequest(nil, predicate: predicate)
     }
 }
 
@@ -20,6 +20,6 @@ extension FetchRequest: NSSortDescriptorConvertible {
     }
 
     public init(sortDescriptors: [NSSortDescriptor]) {
-        self = FetchRequest(sortDescriptors: sortDescriptors)
+        self = FetchRequest(nil, sortDescriptors: sortDescriptors)
     }
 }
