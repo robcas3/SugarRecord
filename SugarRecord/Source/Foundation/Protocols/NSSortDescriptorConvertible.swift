@@ -2,7 +2,8 @@ import Foundation
 
 public protocol NSSortDescriptorConvertible {
     
-    init(sortDescriptor: NSSortDescriptor)    
-    var sortDescriptor: NSSortDescriptor? { get }
+    init(sortDescriptors: [NSSortDescriptor])
+    init(sortDescriptor: NSSortDescriptor)
+    var sortDescriptors: [NSSortDescriptor]? { get }
 
 }

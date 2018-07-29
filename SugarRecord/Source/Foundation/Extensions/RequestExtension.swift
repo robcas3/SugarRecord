@@ -16,7 +16,10 @@ extension FetchRequest: NSPredicateConvertible {
 extension FetchRequest: NSSortDescriptorConvertible {
     
     public init(sortDescriptor: NSSortDescriptor) {
-        self = FetchRequest(sortDescriptor: sortDescriptor)
+        self = FetchRequest(sortDescriptors: [sortDescriptor])
     }
 
+    public init(sortDescriptors: [NSSortDescriptor]) {
+        self = FetchRequest(sortDescriptors: sortDescriptors)
+    }
 }

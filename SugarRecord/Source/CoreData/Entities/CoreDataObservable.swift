@@ -20,8 +20,8 @@ public class CoreDataObservable<T: NSManagedObject>: RequestObservable<T>, NSFet
         if let predicate = request.predicate {
             fetchRequest.predicate = predicate
         }
-        if let sortDescriptor = request.sortDescriptor {
-            fetchRequest.sortDescriptors = [sortDescriptor]
+        if let sortDescriptors = request.sortDescriptors {
+            fetchRequest.sortDescriptors = sortDescriptors
         }
         fetchRequest.fetchBatchSize = 0
         self.fetchRequest = fetchRequest
